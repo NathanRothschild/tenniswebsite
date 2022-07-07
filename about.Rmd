@@ -15,6 +15,6 @@ My name is **Nathan Rothschild** and I attend Concord Academy in Concord, Massac
 *Comparison of Three 33 y/o Professional Tennis Players' Effectiveness*  
 In this project, I looked to assess how effective certain professional tennis players of the same age were. To measure how effective the players were at winning, I collected all of the matches that they had won on the ATP Tour in Main draws of professional events. Then, I determined how many games they had won in each of their victories. For a player to be more effective by this metric, they would have to win the match in as few games won as possible (ideally 12, the worst being 20). I was also interested in their effectiveness over time and if there were any clear trajectories. I chose to plot their games won in matches against the calendar date they had been played. From this, I was able to find that these players, although having almost identical career lengths and similar levels of success, had varying trajectories in effectiveness. Some players were most effective in the beginning and middle of their career, but others were most effective towards the end of their career.
 
-["Here is a link to my GitHub repo."](https://github.com/nathanrothschild/tenniswebsite)  
+[Here is a link to my GitHub repo. ](https://github.com/nathanrothschild/tenniswebsite)  
 
-["Kane's Free High School Data Science Bootcamp"](https://bootcamp.davidkane.info)
+[Kane's Free High School Data Science Bootcamp](https://bootcamp.davidkane.info)

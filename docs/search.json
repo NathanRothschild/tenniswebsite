@@ -5,8 +5,8 @@
       "title": "About this site",
       "description": "Additional details about this project",
       "author": [],
-      "contents": "\nAbout Me\nMy name is Nathan Rothschild and I attend Concord\nAcademy in Concord, Massachusetts. I love tennis, economics, business,\nand working with data.\nAbout the Project\nComparison of Three 33 y/o Professional Tennis Players’\nEffectiveness\nIn this project, I looked to assess how effective certain professional\ntennis players of the same age were. To measure how effective the\nplayers were at winning, I collected all of the matches that they had\nwon on the ATP Tour in Main draws of professional events. Then, I\ndetermined how many games they had won in each of their victories. For a\nplayer to be more effective by this metric, they would have to win the\nmatch in as few games won as possible (ideally 12, the worst being 20).\nI was also interested in their effectiveness over time and if there were\nany clear trajectories. I chose to plot their games won in matches\nagainst the calendar date they had been played. From this, I was able to\nfind that these players, although having almost identical career lengths\nand similar levels of success, had varying trajectories in\neffectiveness. Some players were most effective in the beginning and\nmiddle of their career, but others were most effective towards the end\nof their career.\n“Kane’s Free High School\nData Science Bootcamp”\n\n\n\n",
-      "last_modified": "2022-07-06T21:17:11-04:00"
+      "contents": "\nAbout Me\nMy name is Nathan Rothschild and I attend Concord\nAcademy in Concord, Massachusetts. I love tennis, economics, business,\nand working with data.\nAbout the Project\nComparison of Three 33 y/o Professional Tennis Players’\nEffectiveness\nIn this project, I looked to assess how effective certain professional\ntennis players of the same age were. To measure how effective the\nplayers were at winning, I collected all of the matches that they had\nwon on the ATP Tour in Main draws of professional events. Then, I\ndetermined how many games they had won in each of their victories. For a\nplayer to be more effective by this metric, they would have to win the\nmatch in as few games won as possible (ideally 12, the worst being 20).\nI was also interested in their effectiveness over time and if there were\nany clear trajectories. I chose to plot their games won in matches\nagainst the calendar date they had been played. From this, I was able to\nfind that these players, although having almost identical career lengths\nand similar levels of success, had varying trajectories in\neffectiveness. Some players were most effective in the beginning and\nmiddle of their career, but others were most effective towards the end\nof their career.\nHere is a\nlink to my GitHub repo.\nKane’s Free High School\nData Science Bootcamp\n\n\n\n",
+      "last_modified": "2022-07-06T21:46:09-04:00"
     },
     {
       "path": "index.html",
@@ -14,7 +14,7 @@
       "description": "Professional players of the same age, career length, and similar career success had vastly different effectiveness trajectories during their career.\n",
       "author": [],
       "contents": "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n",
-      "last_modified": "2022-07-06T21:17:17-04:00"
+      "last_modified": "2022-07-06T21:46:16-04:00"
     },
     {
       "path": "sources.html",
@@ -28,7 +28,7 @@
       ],
       "date": "`r Sys.Date()`",
       "contents": "\n\n\n\n",
-      "last_modified": "2022-07-06T21:17:18-04:00"
+      "last_modified": "2022-07-06T21:46:17-04:00"
     }
   ],
   "collections": []
