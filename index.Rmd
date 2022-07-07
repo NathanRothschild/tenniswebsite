@@ -1,0 +1,125 @@
+---
+title: "Comparison of Three 33 y/o Professional Tennis Players' Effectiveness"
+description: |
+ Professional players of the same age, career length, and similar career success had vastly different effectiveness trajectories during their career.
+site: distill::distill_website
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+library(tidyverse)
+library(primer.data)
+library(deuce)
+library(gghighlight)
+library(plotly)
+```
+
+```{r, start_data}
+data(point_by_point)
+thedog<- point_by_point |> 
+  filter(tour == "ATP", server1 == "Alexandr Dolgopolov" & winner == 1 | server2 == "Alexandr Dolgopolov" & winner == 2, draw == "Main")
+delpo <- point_by_point |> 
+  filter(tour == "ATP", server1 == "Juan Martin del Potro" & winner == 1 | server2 == "Juan Martin del Potro" & winner == 2, draw == "Main")
+cilic <- point_by_point |> 
+  filter(tour == "ATP", server1 == "Marin Cilic" & winner == 1 | server2 == "Marin Cilic" & winner == 2, draw == "Main")
+```
+
+```{r, clean_data}
+beg_thedog<- thedog |> 
+  select(server1, server2, winner, score, tny_date, W1, W2, W3, L1, L2, L3)
+beg_delpo <- delpo |> 
+  select(server1, server2, winner, score, tny_date, W1, W2, W3, L1, L2, L3)
+beg_cilic <- cilic |> 
+  select(server1, server2, winner, score, tny_date, W1, W2, W3, L1, L2, L3)
+```
+
+```{r, fix_data}
+beg_as_int <- beg_thedog |> 
+  mutate(W1 = as.integer(beg_thedog$W1)) |> 
+  mutate(W2 = as.integer(beg_thedog$W2)) |> 
+  mutate(W3 = as.integer(beg_thedog$W3))
+delpo_as_int <- beg_delpo |> 
+  mutate(W1a = as.integer(beg_delpo$W1)) |> 
+  mutate(W2a = as.integer(beg_delpo$W2)) |> 
+  mutate(W3a = as.integer(beg_delpo$W3))
+cilic_as_int <- beg_cilic |> 
+  mutate(W1b = as.integer(beg_cilic$W1)) |> 
+  mutate(W2b = as.integer(beg_cilic$W2)) |> 
+  mutate(W3b = as.integer(beg_cilic$W3))
+```
+```{r, get_wins}
+the_dog_wins<- beg_as_int |> 
+  drop_na() |> 
+  mutate(games_won = W1 + W2 + W3) |> 
+  mutate(year = format(tny_date, '%Y'))
+delpo_wins <- delpo_as_int |> 
+  drop_na() |> 
+  mutate(games_won2 = W1a + W2a + W3a) |> 
+  mutate(year2 = format(tny_date, '%Y'))
+cilic_wins <- cilic_as_int |> 
+  drop_na() |> 
+  mutate(games_won3 = W1b + W2b + W3b) |> 
+  mutate(year3 = format(tny_date, '%Y'))
+```
+
+```{r, plotting1}
+the_dog_graph <- the_dog_wins |> 
+  ggplot(mapping = aes(x = tny_date, y = games_won)) + 
+  geom_jitter() +
+  theme_minimal()+
+  labs(title = "Number of Games Necessary for Alexandr Dolgopolov to Win a Match", subtitle = "He needed to win the fewest number of games in 2012",
+x = "",
+y = "Number of Games Won",
+caption = "Source: github.com/skoval/deuce") + 
+  geom_smooth(method = "loess", formula = y~x, se = FALSE)
+
+plotly::ggplotly(the_dog_graph)
+```
+```{r}
+delpo_graph<- delpo_wins |> 
+  ggplot(mapping = aes(x = tny_date, y = games_won2)) + 
+  geom_jitter() +
+  theme_minimal()+
+  labs(title = "Number of Games Necessary for Juan Martin del Potro to Win a Match", subtitle = "He needed to win the fewest number of games in the middle of his career",
+x = "",
+y = "Number of Games Won",
+caption = "Source: github.com/skoval/deuce") + 
+  geom_smooth(method = "loess", formula = y~x, se = FALSE)
+  
+plotly::ggplotly(delpo_graph)
+```
+
+```{r, plotting2}
+cilic_graph <- cilic_wins |> 
+  ggplot(mapping = aes(x = tny_date, y = games_won3)) + 
+  geom_jitter() +
+  theme_minimal()+
+  labs(title = "Number of Games Necessary for Marin Cilic to Win a Match", subtitle = "He needed to win the fewest number of games in 2012",
+x = "",
+y = "Number of Games Won",
+caption = "Source: github.com/skoval/deuce") + 
+  geom_smooth(method = "loess", formula = y~x, se = FALSE)
+
+plotly::ggplotly(cilic_graph)
+```
+
+```{r, plotting3}
+colors <- c("Alexandr Dolgopolov" = "darkblue", "Juan Martin del Potro" = "skyblue", "Marin Cilic" = "forestgreen")
+p <- ggplot() + 
+  geom_jitter(data = the_dog_wins, mapping = aes(x = tny_date, y = games_won, color = "Alexandr Dolgopolov")) + 
+  geom_smooth(data = the_dog_wins, mapping = aes(x = tny_date, y = games_won, color = "Alexandr Dolgopolov"), method = "loess", formula = y~x, se = FALSE) +
+  geom_jitter(data = delpo_wins, mapping = aes(x = tny_date, y = games_won2, color = "Juan Martin del Potro")) + 
+  geom_smooth(data = delpo_wins, mapping = aes(x = tny_date, y = games_won2, color = "Juan Martin del Potro"), method = "loess", formula = y~x, se = FALSE) +
+  geom_jitter(data = cilic_wins, mapping = aes(x = tny_date, y = games_won3, color = "Marin Cilic")) + 
+  geom_smooth(data = cilic_wins, mapping = aes(x = tny_date, y = games_won3, color = "Marin Cilic"), method = "loess", formula = y~x, se = FALSE) +
+  labs(title = "Number of Games Necessary for 33 y/o Players to Win a Match",
+       subtitle = "All had a significant increase in effectiveness during 2016",
+       x = "",
+       y = "Number of Games Won",
+       caption = "Source: github.com/skoval/deuce",
+       color = "Player") + 
+  scale_color_manual(values = colors)+
+  theme_minimal()
+
+plotly::ggplotly(p)
+```

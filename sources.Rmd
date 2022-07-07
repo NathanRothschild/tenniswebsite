@@ -1,0 +1,21 @@
+---
+title: "Sources"
+description: |
+  Main source: https://github.com/skoval/deuce
+    
+    "deuce is an R package that provides easy access to a rich set of online data on professional tennis. By making tennis data more available to R users, deuce aims to be a useful tool for tennis analysts and a fun resource for teachers of statistics." ~skoval
+author:
+  - name: Nathan Rothschild
+date: "`r Sys.Date()`"
+output: distill::distill_article
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+
+
+
+
+
